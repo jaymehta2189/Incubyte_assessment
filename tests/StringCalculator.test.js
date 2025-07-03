@@ -15,5 +15,8 @@ describe('StringCalculator', () => {
   test('two numbers returns their sum', () => {
     expect(calc.add('1,2')).toBe(3);
   });
-  
+  test('newlines between numbers are ok', () => {
+    expect(calc.add('1\n2,3')).toBe(6);
+  });
+
 });

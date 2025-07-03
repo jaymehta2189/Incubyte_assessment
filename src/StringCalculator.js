@@ -7,8 +7,9 @@
         if (numbers === '') {
             return 0;
         }
-        let nums = numbers.split(',').map(n => parseInt(n, 10));
-        return nums.reduce((acc, num) => acc + num, 0);
+        const delimiterRegex = /,|\n/;
+        let nums = numbers.split(delimiterRegex).map(n => parseInt(n, 10));
+        return nums.reduce((a, b) => a + b, 0);
     }
     getCalledCount() {
         return this.callCount;
