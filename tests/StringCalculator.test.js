@@ -27,4 +27,12 @@ describe('StringCalculator', () => {
 //   test('wrong delim placeholder (should fail)', () => {
 //     expect(calc.add('//;\n2;5')).toBe(8);
 //   });
+  test('single negative throws listing it', () => {
+    expect(() => calc.add('2,-4,3'))
+      .toThrow('negatives not allowed: -4');
+  });
+    test('multiple negatives throws listing them', () => {
+        expect(() => calc.add('2,-4,3,-5'))
+        .toThrow('negatives not allowed: -4,-5');
+    });
 });
