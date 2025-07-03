@@ -18,5 +18,13 @@ describe('StringCalculator', () => {
   test('newlines between numbers are ok', () => {
     expect(calc.add('1\n2,3')).toBe(6);
   });
-
+  test('custom semicolon delimiter', () => {
+    expect(calc.add('//;\n2;5')).toBe(7);
+  });
+  test('custom multiply delimiter', () => {
+    expect(calc.add('//*\n2*5')).toBe(7);
+  });
+//   test('wrong delim placeholder (should fail)', () => {
+//     expect(calc.add('//;\n2;5')).toBe(8);
+//   });
 });
