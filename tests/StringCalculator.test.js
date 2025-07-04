@@ -65,4 +65,10 @@ describe('StringCalculator', () => {
   test('custom delimiters with brackets', () => {
     expect(calc.add('//[**]\n1**3**2**3')).toBe(9);
   });
+  test('multiple custom delimiters with brackets', () => {
+    expect(calc.add('//[**][%]\n1**3%2**3')).toBe(9);
+  });
+  test('multiple custom delimiters with brackets and newlines', () => {
+    expect(calc.add('//[**][;]\n1**3;2\n3')).toBe(9);
+  });
 });
