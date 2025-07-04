@@ -15,6 +15,11 @@ describe('StringCalculator', () => {
   test('two numbers returns their sum', () => {
     expect(calc.add('1,2')).toBe(3);
   });
+  test('total count test',()=>{
+    calc.add('1,2');
+    calc.add('3,4');
+    expect(calc.getCalledCount()).toBe(2);
+  })
   test('newlines between numbers are ok', () => {
     expect(calc.add('1\n2,3')).toBe(6);
   });
