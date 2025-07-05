@@ -15,60 +15,41 @@ describe('StringCalculator', () => {
   test('two numbers returns their sum', () => {
     expect(calc.add('1,2')).toBe(3);
   });
-  // test('intial count without calls is 0', () => {
-  //   expect(calc.getCalledCount()).toBe(0);
-  // });
-  test('total count test', () => {
-    calc.add('1,2');
-    calc.add('3,4');
-    expect(calc.getCalledCount()).toBe(2);
-  })
-  test('newlines between numbers are ok', () => {
+  test('unknown number of numbers returns their sum', () => {
+    expect(calc.add('1,2,3,4,5')).toBe(15);
+  });
+  test('newlines between numbers as delimiter', () => {
     expect(calc.add('1\n2,3')).toBe(6);
   });
   test('custom semicolon delimiter', () => {
     expect(calc.add('//;\n2;5')).toBe(7);
   });
-  test('custom multiply delimiter', () => {
-    expect(calc.add('//*\n2*5')).toBe(7);
-  });
-  //   test('wrong delim placeholder (should fail)', () => {
-  //     expect(calc.add('//;\n2;5')).toBe(8);
-  //   });
-  // test('sum with negative number', () => {
-  //   expect(calc.add('2,-2,1')).toBe(1);
-  // });
-  test('single negative throws listing it', () => {
+  test('negative number throws exception', () => {
     expect(() => calc.add('2,-4,3'))
       .toThrow('negatives not allowed: -4');
   });
-   // test('single negative throws listing it', () => {
-  //   expect(calc.add('//-\n2-4-3')).toBe(9);
-  // });
-  test('multiple negatives throws listing them', () => {
+  test('multiple negatives shows all in exception', () => {
     expect(() => calc.add('2,-4,3,-5'))
       .toThrow('negatives not allowed: -4,-5');
   });
-  
-  // test('addition with number greater than 1000', () => {
-  //   expect(calc.add('//;\n2;1001;3')).toBe();
-  // });
+  test('intial count without calls is 0', () => {
+    expect(calc.getCalledCount()).toBe(0);
+  });
+  test('total count test', () => {
+    calc.add('1,2');
+    calc.add('3,4');
+    expect(calc.getCalledCount()).toBe(2);
+  })
   test('ignore numbers greater than 1000', () => {
     expect(calc.add('2,1001,3')).toBe(5);
   });
-  test('ignore numbers greater than 1000 with custom delimiter', () => {
-    expect(calc.add('//;\n2;1001;3')).toBe(5);
-  });
-  // test('wrong delimiter used (should fail)', () => {
-  //   expect(calc.add('//[***]\n1**2***3')).toBe(6);
-  // });
-  test('custom delimiters with brackets', () => {
+  test('delimiters of any length', () => {
     expect(calc.add('//[**]\n1**3**2**3')).toBe(9);
   });
   test('multiple custom delimiters with brackets', () => {
-    expect(calc.add('//[**][%]\n1**3%2**3')).toBe(9);
+    expect(calc.add('//[*][%]\n1*3%2*3')).toBe(9);
   });
-  test('multiple custom delimiters with brackets and newlines', () => {
-    expect(calc.add('//[**][;]\n1**3;2\n3')).toBe(9);
+  test('multiple custom delimiters with brackets of any length', () => {
+    expect(calc.add('//[**][$$]\n1**3$$2$$3')).toBe(9);
   });
 });

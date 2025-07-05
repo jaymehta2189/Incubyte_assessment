@@ -1,11 +1,12 @@
 class StringCalculator {
-    constructor() {
-        this.callCount = 0;
-    }
-    static escapeRegExp(str) {
-        return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
-    }
-    add(numbers) {
+  constructor() {
+    this.callCount = 0;
+  }
+  static escapeRegex(str) {
+    return str.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+
+  add(numbers) {
     this.callCount++;
     if (!numbers) return 0;
 
@@ -16,7 +17,6 @@ class StringCalculator {
       const spec = first.slice(2);
       input = rest.join('\n');
 
-      // bracketed delimiters
       const matches = spec.match(/\[([^\]]+)\]/g);
       if (matches) {
         delimiters = matches.map(m => m.slice(1, -1));
@@ -26,7 +26,7 @@ class StringCalculator {
     }
 
     const regex = new RegExp(
-      delimiters.map(d => StringCalculator.escapeRegExp(d)).join('|')
+      delimiters.map(d => StringCalculator.escapeRegex(d)).join('|')
     );
     const nums = input.split(regex).map(n => parseInt(n, 10));
 
@@ -39,10 +39,9 @@ class StringCalculator {
       .filter(n => n <= 1000)
       .reduce((sum, n) => sum + n, 0);
   }
-
-    getCalledCount() {
-        return this.callCount;
-    }
+  getCalledCount() {
+    return this.callCount;
+  }
 }
 
 module.exports = StringCalculator;
