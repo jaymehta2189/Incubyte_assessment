@@ -12,8 +12,7 @@ A professional implementation of the **String Calculator Kata**, built using **J
 - [⚙️ Setup & Installation](#️-setup--installation)
 - [📦 Usage](#-usage)
 - [🧪 Testing](#-testing)
-- [🖼️ Screenshots](#-screenshots)
-- [📈 Commit History](#-commit-history)
+- [🖼️ Screenshots](#screenshots)
 - [🛠️ Tech Stack](#️-tech-stack)
 
 ---
@@ -129,7 +128,7 @@ Tests are located in `tests/StringCalculator.test.js`.
 
 ---
 
-## 🖼️ Screenshots
+## Screenshots
 
 | ✅ Pass Cases                            | ❌ Fail Cases                             |
 |-----------------------------------------|-------------------------------------------|
